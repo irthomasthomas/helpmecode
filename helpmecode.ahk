@@ -1,7 +1,6 @@
 #Include Socket.ahk
 SetKeyDelay, 0, 10, InputThenPlay  
 
-
 ;SET IP ADDRESS OF PYTHON SERVER HERE...
 addr := "192.168.0.2" ; ENTER YOUR IP FROM THE PYTHON SCREEN
 if addr = ""
@@ -17,7 +16,7 @@ catch e
     Exit
 }
 
-msgbox , , ,helpmecode AI, Connected. `r`n type howdoi in your editor. `r`n Reload app with Ctrl+
+msgbox , , ,helpmecode AI, Connected. `r`n type howdoi in your editor. `r`n Reload app with Ctrl+Alt+R `r`n to quit app Ctrl+Alt+Q 
 
 :*B0:helpme:: ; typing helpme triggers the function to read...
 	WinGetTitle, title, A
@@ -37,7 +36,7 @@ msgbox , , ,helpmecode AI, Connected. `r`n type howdoi in your editor. `r`n Relo
 	SetKeyDelay, 0, 10, InputThenPlay  
 	SendRaw, %string1%
 	SendRaw, %string2%
-	BlockInput, On
+	BlockInput, Off
 return
 
 howdoiquery(query, myTcp)
@@ -77,4 +76,4 @@ howdoiquery(query, myTcp)
 }
 
 ^!r::Reload
-^!q::Exit
+^!q::ExitApp
