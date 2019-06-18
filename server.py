@@ -6,8 +6,10 @@ import datetime
 from _thread import *
 import sys
 import threading
-from howdoi.howdoi import howdoi
-
+try:
+    from howdoi.howdoi import howdoi
+except:
+    print("Error: please pip install howdoi first")
 
 host = ''
 port = 8337
@@ -83,3 +85,4 @@ while True:
     conn, addr = s.accept()
     print('connected to: '+addr[0]+':'+str(addr[1]))
     start_new_thread(threaded_client,(conn,))
+
