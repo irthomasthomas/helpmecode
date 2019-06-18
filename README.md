@@ -1,2 +1,3 @@
 # helpmecode
-Context aware live coding AI for any editor
+A context aware live coding AI. Crowd sourced from howdoi
+![](live-coding-machine-ai-demo.gif)
