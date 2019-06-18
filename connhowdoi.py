@@ -1,7 +1,5 @@
-#from __future__ import with_statement
 import socket
 import time
-#import subprocess
 import pickle
 import os
 import datetime
@@ -11,31 +9,38 @@ import threading
 from howdoi.howdoi import howdoi
 
 
-global instagram_active 
-instagram_active = False
-
 host = ''
 port = 8337
 CONNECTION_LIST = []
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-scriptPath = os.getcwd()
 
 print("Socket created")
-print("add this address to ahk script...")
-print(str(socket.gethostbyname(socket.gethostname())))
-
 try:
     s.bind((host,port))
 except socket.error as e:
     print(str(e))
     sys.exit()
 
-print("Socket has been bounded")
+print("Socket bounded")
+
+#print(str(socket.gethostbyname(socket.gethostname())))
 
 s.listen(10)
 CONNECTION_LIST.append(s)
 print('Socket is ready. Waiting for requests ')
+
+def get_ip():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        # doesn't even have to be reachable
+        s.connect(('10.255.255.255', 1))
+        IP = s.getsockname()[0]
+    except:
+        IP = '127.0.0.1'
+    finally:
+        s.close()
+    return IP
 
 def howdoitommy(query):
     n = 1
@@ -48,12 +53,11 @@ def howdoitommy(query):
             'color': False,
            }
         answer = howdoi(args)
-        if len(answer) > 400:
+        if len(answer) > 700 or  len(answer) < 100:
             n += 1
             continue
         else:
             return answer 
-   
 
 def threaded_client(conn):
 
@@ -71,9 +75,11 @@ def threaded_client(conn):
             print(str(dataArray[1]))
     conn.close()
 
+print("ADD THIS IP TO AHK FILE...")
+IP = get_ip()
+print(str(IP))
 
 while True:
     conn, addr = s.accept()
     print('connected to: '+addr[0]+':'+str(addr[1]))
     start_new_thread(threaded_client,(conn,))
-
