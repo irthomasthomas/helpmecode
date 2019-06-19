@@ -1,6 +1,6 @@
 # helpmecode
 
-## A context aware live coding AI. Crowd sourced from howdoi
+## A context aware coding AI. With answers crowd sourced from stack-exchange via howdoi.py
 
 ![](live-coding-machine-ai-demo.gif)
 
