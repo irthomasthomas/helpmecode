@@ -2,7 +2,7 @@
 SetKeyDelay, 0, 10, InputThenPlay  
 
 ;SET IP ADDRESS OF PYTHON SERVER HERE...
-addr := "" ; ENTER YOUR IP FROM THE PYTHON SCREEN
+addr := "192.168.0.2" ; ENTER YOUR IP FROM THE PYTHON SCREEN
 if addr = ""
 	addr = %A_IPAddress1%
 myTcp := new SocketTCP()
@@ -18,25 +18,15 @@ catch e
 
 msgbox , , ,helpmecode AI, Connected. `r`n type howdoi in your editor. `r`n Reload app with Ctrl+Alt+R `r`n to quit app Ctrl+Alt+Q 
 
-:*B0:helpme:: ; typing helpme triggers the function to read...
+:*B0:helpme:: ; typing helpme triggers the function to read your input...
 	WinGetTitle, title, A
-	if title !contains "Visual Studio Code", "Notepad++"
+	if title !contains "Visual Studio Code", "Notepad++", "SciTE4AutoHotkey", "Sublime"
 		return
-	
 	Input, query, V, {Enter}	;... and {enter} submits the query
-	BlockInput, On
 	backspaces := strlen(query) + 7
 	SendInput, {Backspace %backspaces%}
-
-	answer := howdoiquery(query,myTcp)
-	
-	answerlen := strlen(answer)
-	string1 := SubStr(answer,1,(answerlen/2)) ;splitting the answer in half...
-	string2 := SubStr(answer,(answerlen/2),answerlen) ;...  to overcome SendRaw limitation. 
-	SetKeyDelay, 0, 10, InputThenPlay  
-	SendRaw, %string1%
-	SendRaw, %string2%
-	BlockInput, Off
+	SetKeyDelay, 5
+	SendRaw % howdoiquery(query,myTcp)	
 return
 
 howdoiquery(query, myTcp)
@@ -54,7 +44,7 @@ howdoiquery(query, myTcp)
 		Else if title contains .go, .GO
 			query .= "go"
 		Else if title contains .cs, .CS
-			query .= "c sharp"
+			query .= "c#"
 		Else if title contains .sh, .SH		
 			query .= "bash"
 		Else if title contains .js, .JS
@@ -62,18 +52,17 @@ howdoiquery(query, myTcp)
 		Else if title contains .jsx
 			query .= "javascript react"
 	}
-	
 	command := "howdoi"
 	command .= ";" . query
 	myTcp.SendText(command)
-	SetKeyDelay, 100, 0, InputThenPlay
+	SetKeyDelay, 100
 	Send, let me see ...
 	Loop 4
 		send ^{backspace}
-	response := myTcp.recvText(2048)
-	
-	return %response%
+	SetKeyDelay, 5	
+	return myTcp.recvText(2048)
 }
 
 ^!r::Reload
 ^!q::ExitApp
+
