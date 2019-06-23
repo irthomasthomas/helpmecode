@@ -32,7 +32,7 @@ def get_ip():
 def howdoitommy(query):
     n = 1
     while True:
-        if n > 6:
+        if n > 10:
             return 'sorry, I cannot answer that'
         args = {
             'query': query.split(' '),
@@ -42,22 +42,20 @@ def howdoitommy(query):
             'color': False,
            }
         answer = howdoi(args)
-        if len(answer) > 600 or  len(answer) < 100:
+        if len(answer) > 700 or  len(answer) < 100:
             n += 1
             continue
         else:
             return answer 
 
 def threaded_client(conn):
-
     while True:
         data = conn.recv(2048)
         if not data:
             break;
-        
-
         dataArray = data.decode().split(';')
         if dataArray[0] == 'howdoi':
+            print(str(dataArray[1]))
             answer = howdoitommy(dataArray[1])
             conn.sendall(str.encode(answer))
         elif dataArray[0] == 'print_to_terminal':
@@ -72,8 +70,6 @@ except socket.error as e:
     sys.exit()
 
 print("Socket bounded")
-
-#print(str(socket.gethostbyname(socket.gethostname())))
 
 s.listen(10)
 CONNECTION_LIST.append(s)

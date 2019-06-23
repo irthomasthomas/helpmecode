@@ -1,5 +1,5 @@
 #Include Socket.ahk
-SetKeyDelay, 0, 10, InputThenPlay  
+SetKeyDelay, 5
 
 ;SET IP ADDRESS OF PYTHON SERVER HERE...
 addr := "" ; ENTER YOUR IP FROM THE PYTHON SCREEN
@@ -16,7 +16,7 @@ catch e
     Exit
 }
 
-msgbox , , ,helpmecode AI, Connected. `r`n type howdoi in your editor. `r`n Reload app with Ctrl+Alt+R `r`n to quit app Ctrl+Alt+Q 
+msgbox , , ,helpmecode AI, Connected. `r`n type helpme and your query in your editor. `r`n Reload app with Ctrl+Alt+R `r`n to quit app Ctrl+Alt+Q 
 
 :*B0:helpme:: ; typing helpme triggers the function to read your input...
 	WinGetTitle, title, A
@@ -55,7 +55,7 @@ howdoiquery(query, myTcp)
 	command := "howdoi"
 	command .= ";" . query
 	myTcp.SendText(command)
-	SetKeyDelay, 100
+	SetKeyDelay, 80
 	Send, let me see ...
 	Loop 4
 		send ^{backspace}
@@ -65,4 +65,3 @@ howdoiquery(query, myTcp)
 
 ^!r::Reload
 ^!q::ExitApp
-

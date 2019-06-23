@@ -2,8 +2,9 @@
 
 ## A context aware coding AI. With answers crowd sourced from stack-exchange via howdoi.py
 
-![](live-coding-machine-ai-demo.gif)
+![helpmecode ai assistant live demo in Apache Groovy](helpme-apache-groovy-coding-ai-assistant-live-demo.gif)
 
+![helpmecode programming ai assistant python-groovy-c#-sql-java](live-coding-machine-ai-demo.gif)
 
 > python3 -m pip install howdoi
 > python3 server.py
