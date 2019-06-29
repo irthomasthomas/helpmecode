@@ -42,7 +42,7 @@ def howdoitommy(query):
             'color': False,
            }
         answer = howdoi(args)
-        if len(answer) > 700 or  len(answer) < 100:
+        if len(answer) < 30 or len(answer) > 700:
             n += 1
             continue
         else:
@@ -83,4 +83,3 @@ while True:
     conn, addr = s.accept()
     print('connected to: '+addr[0]+':'+str(addr[1]))
     start_new_thread(threaded_client,(conn,))
-

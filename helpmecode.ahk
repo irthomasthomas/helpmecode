@@ -1,5 +1,4 @@
 #Include Socket.ahk
-SetKeyDelay, 5
 
 ;SET IP ADDRESS OF PYTHON SERVER HERE...
 addr := "" ; ENTER YOUR IP FROM THE PYTHON SCREEN
@@ -20,7 +19,7 @@ msgbox , , ,helpmecode AI, Connected. `r`n type helpme and your query in your ed
 
 :*B0:helpme:: ; typing helpme triggers the function to read your input...
 	WinGetTitle, title, A
-	if title !contains "Visual Studio Code", "Notepad++", "SciTE4AutoHotkey", "Sublime"
+	if title !contains "Visual Studio Code", "Notepad++", "SciTE4AutoHotkey", "Sublime", "Atom"
 		return
 	Input, query, V, {Enter}	;... and {enter} submits the query
 	backspaces := strlen(query) + 7
@@ -40,17 +39,17 @@ howdoiquery(query, myTcp)
 		Else if title contains .sql, .SQL
 			query .= " sql"
 		Else if title contains .groovy
-			query .= "groovy"
+			query .= " groovy"
 		Else if title contains .go, .GO
-			query .= "go"
+			query .= " go"
 		Else if title contains .cs, .CS
-			query .= "c#"
+			query .= " c#"
 		Else if title contains .sh, .SH		
-			query .= "bash"
+			query .= " bash"
 		Else if title contains .js, .JS
-			query .= "javascript"
+			query .= " javascript"
 		Else if title contains .jsx
-			query .= "javascript react"
+			query .= " javascript react"
 	}
 	command := "howdoi"
 	command .= ";" . query
