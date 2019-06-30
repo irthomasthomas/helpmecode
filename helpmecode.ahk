@@ -19,8 +19,8 @@ msgbox , , ,helpmecode AI, Connected. `r`n type helpme and your query in your ed
 
 :*B0:helpme:: ; typing helpme triggers the function to read your input...
 	WinGetTitle, title, A
-	if title !contains "Visual Studio Code", "Notepad++", "SciTE4AutoHotkey", "Sublime", "Atom"
-		return
+	if title not contains Visual Studio Code, Notepad++, SciTE4AutoHotkey, Sublime, Atom
+		return 
 	Input, query, V, {Enter}	;... and {enter} submits the query
 	backspaces := strlen(query) + 7
 	SendInput, {Backspace %backspaces%}
@@ -64,3 +64,4 @@ howdoiquery(query, myTcp)
 
 ^!r::Reload
 ^!q::ExitApp
+

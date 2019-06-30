@@ -42,7 +42,7 @@ def howdoitommy(query):
             'color': False,
            }
         answer = howdoi(args)
-        if len(answer) < 30 or len(answer) > 700:
+        if len(answer) < 30 or len(answer) > 600:
             n += 1
             continue
         else:
