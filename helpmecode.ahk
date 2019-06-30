@@ -1,7 +1,7 @@
 #Include Socket.ahk
 
 ;SET IP ADDRESS OF PYTHON SERVER HERE...
-addr := "192.168.0.2" ; ENTER YOUR IP FROM THE PYTHON SCREEN
+addr := "" ; ENTER YOUR IP FROM THE PYTHON SCREEN
 if addr = ""
 	addr = %A_IPAddress1%
 myTcp := new SocketTCP()
@@ -64,4 +64,10 @@ howdoiquery(query, myTcp)
 
 ^!r::Reload
 ^!q::ExitApp
+
+
+
+
+
+
 
