@@ -1,8 +1,8 @@
 #Include Socket.ahk
 
 ;SET IP ADDRESS OF PYTHON SERVER HERE...
-addr := "" ; ENTER YOUR IP FROM THE PYTHON SCREEN
-if addr = ""
+addr := " " ; ENTER YOUR IP FROM THE PYTHON SCREEN
+if addr = " "
 	addr = %A_IPAddress1%
 myTcp := new SocketTCP()
 try
@@ -11,7 +11,7 @@ try
 }
 catch e 
 {
-	MsgBox, 64, Error, Either the python server is inaccessible or you did not edit this script to include it's lan IP
+	MsgBox, 64, Error, Either the python server is inaccessible, or you did not edit this script to include it's lan IP
     Exit
 }
 
