@@ -15,16 +15,14 @@ catch e
     Exit
 }
 
-msgbox , , ,helpmecode AI, Connected. `r`n type helpme and your query in your editor. `r`n Reload app with Ctrl+Alt+R `r`n to quit app Ctrl+Alt+Q 
+msgbox , , ,helpmecode AugmentedIntelligence, Connected. `r`n Type helpme and your query in your editor. `r`n Reload app with Ctrl+Alt+R `r`n to quit app Ctrl+Alt+Q 
 
 :*B0:helpme:: ; typing helpme triggers the function to read your input...
 	WinGetTitle, title, A
 	if title not contains Visual Studio Code, Notepad++, SciTE4AutoHotkey, Sublime, Atom
 		return 
-	Input, query, V, {Enter}	;... and {enter} submits the query
-	backspaces := strlen(query) + 7
-	SendInput, {Backspace %backspaces%}
-	SetKeyDelay, 5
+	Input, query, V, {Enter}{Esc}{Tab}	;... and {enter} submits the query
+	SendInput, {Enter} {Up}
 	SendRaw % howdoiquery(query,myTcp)	
 return
 
@@ -55,19 +53,10 @@ howdoiquery(query, myTcp)
 	command .= ";" . query
 	myTcp.SendText(command)
 	SetKeyDelay, 80
-	Send, let me see ...
-	Loop 4
-		send ^{backspace}
-	SetKeyDelay, 5	
+	Send, let me see ... {Enter}
+	SetKeyDelay, 5
 	return myTcp.recvText(2048)
 }
 
 ^!r::Reload
 ^!q::ExitApp
-
-
-
-
-
-
-
