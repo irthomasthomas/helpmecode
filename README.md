@@ -1,6 +1,6 @@
 # helpmecode
 
-## A context aware coding AI. With answers crowd sourced from stack-exchange via howdoi.py
+## A context aware coding AI. 
 
 ![helpmecode ai assistant live demo in Apache Groovy](helpme-apache-groovy-coding-ai-assistant-live-demo.gif)
 
