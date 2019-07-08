@@ -20,15 +20,15 @@
 
 ## Instructions
 
-> python3 -m pip install howdoi
+1. python3 -m pip install howdoi
 
-> python3 server.py
+2. python3 server.py
 
-> If you have not done so already, install v1.1~ of www.autohotkey.com
+3. If you have not done so already, install v1.1~ of www.autohotkey.com
 
-* If python is on a different machine, edit helpmecode.ahk to include its IP address
+4. If python is on a different machine, edit helpmecode.ahk to include its IP address
 
-> run helpmecode.ahk
+5. Open helpmecode.ahk
 
 * Query history and error messages are sent to python terminal.
 
