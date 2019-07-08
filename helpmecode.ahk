@@ -1,13 +1,13 @@
 #Include Socket.ahk
 
 ;SET IP ADDRESS OF PYTHON SERVER HERE...
-addr := " " ; ENTER YOUR IP FROM THE PYTHON SCREEN
-if addr = " "
-	addr = %A_IPAddress1%
+ipAddress := " " ; ENTER YOUR IP FROM THE PYTHON SCREEN
+if ipAddress = " "
+	ipAddress = %A_IPAddress1%
 myTcp := new SocketTCP()
 try
 {
-    myTcp.Connect([addr, 8337])
+    myTcp.Connect([ipAddress, 8337])
 }
 catch e 
 {
@@ -22,7 +22,7 @@ msgbox , , ,helpmecode AugmentedIntelligence, Connected. `r`n Type helpme and yo
 	if title not contains Visual Studio Code, Notepad++, SciTE4AutoHotkey, Sublime, Atom
 		return 
 	Input, query, V, {Enter}{Esc}{Tab}	;... and {enter} submits the query
-	SendInput, {Enter} {Up}
+	Sleep 100
 	SendRaw % howdoiquery(query,myTcp)	
 return
 
@@ -49,6 +49,8 @@ howdoiquery(query, myTcp)
 		Else if title contains .jsx
 			query .= " javascript react"
 	}
+	SendInput, {Enter}
+	Sleep 10
 	command := "howdoi"
 	command .= ";" . query
 	myTcp.SendText(command)
