@@ -1,8 +1,8 @@
 #Include Socket.ahk
 
 ;SET IP ADDRESS OF PYTHON SERVER HERE...
-ipAddress := " " ; ENTER YOUR IP FROM THE PYTHON SCREEN
-if ipAddress = " "
+ipAddress := "" ; ENTER YOUR IP FROM THE PYTHON SCREEN
+if ipAddress = ""
 	ipAddress = %A_IPAddress1%
 myTcp := new SocketTCP()
 try
