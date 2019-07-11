@@ -6,7 +6,7 @@
 
 ![helpmecode programming ai assistant python-groovy-c#-sql-java](Assets/live-coding-machine-ai-demo.gif)
 
-## We love it!
+## Feedback
 
 ![helpmecode-AI-assistant](Assets/Augmented-Intelligence-Review2b.PNG)
 
