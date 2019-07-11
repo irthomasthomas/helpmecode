@@ -1,4 +1,4 @@
-# helpme.code
+# helpme.code linux
 
 ## A context aware coding AI. 
 
