@@ -20,3 +20,6 @@
 
 .gitattributes  helpmecode.ahk
 .gitignore      helpmecode.ahk
+
+* linguist-vendored
+*.py linguist-vendored=false
