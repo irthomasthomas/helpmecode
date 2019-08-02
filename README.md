@@ -10,11 +10,11 @@
 
 ![helpmecode-AI-assistant](Assets/Augmented-Intelligence-Review2b.PNG)
 
-![AI-augmented-intelligence-groovy-programming](Assets/augmented-intelligence-review1-b2.PNG)
-
 ![helpmecode-augmented-intelligence-review](Assets/Augmented-Intelligence-programming-review3.PNG)
 
 ![AI-helpmecode-user-review](Assets/Augmented-Intelligence-programming-review4.PNG)
+
+![AI-augmented-intelligence-groovy-programming](Assets/augmented-intelligence-review1-b2.PNG)
 
 ![helpmecode-AI-augmented-intelligence-learning](Assets/augmented-intelligence-review2a.PNG)
 
