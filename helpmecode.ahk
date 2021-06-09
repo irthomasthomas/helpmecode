@@ -1,7 +1,7 @@
 #Include Socket.ahk
 
 ;SET IP ADDRESS OF PYTHON SERVER HERE...
-ipAddress := "" ; ENTER YOUR IP FROM THE PYTHON SCREEN
+ipAddress := "192.168.0.3" ; ENTER YOUR IP FROM THE PYTHON SCREEN
 if ipAddress = ""
 	ipAddress = %A_IPAddress1%
 myTcp := new SocketTCP()
@@ -53,6 +53,7 @@ howdoiquery(query, myTcp)
 	Sleep 10
 	command := "howdoi"
 	command .= ";" . query
+	;msgbox %command%
 	myTcp.SendText(command)
 	SetKeyDelay, 80
 	Send, let me see ... {Enter}

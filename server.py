@@ -25,7 +25,7 @@ s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 def get_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
-        # doesn't even have to be reachable
+        # doesn"t even have to be reachable
         s.connect(("10.255.255.255", 1))
         IP = s.getsockname()[0]
     except:
@@ -34,18 +34,29 @@ def get_ip():
         s.close()
     return IP
 
-
 def howdoitommy(query):
     n = 1
     while True:
         if n > 10:
             return "sorry, I cannot answer that"
+
         args = {
-            "query": query.split(" "),
+            "query": query, #.split(" "),
             "num_answers": 1,
             "pos": n,
             "all": False,
             "color": False,
+            "explain": False,
+            "clear_cache": False,
+            "json_output": False,
+            "version": False,
+            "search_engine": "google",
+            "save": False,
+            "view": False,
+            "remove": False,
+            "empty": False,
+            "sanity_check": False,
+            "link": False
         }
         answer = howdoi(args)
         if len(answer) < 50 or len(answer) > 600:
@@ -53,6 +64,7 @@ def howdoitommy(query):
             continue
         else:
             return answer
+
 
 
 def threaded_client(conn):
