@@ -1,0 +1,15 @@
+
+# 2023-07-16 20:45:27.432355
++Rewrite helpmecode.ahk for linux as a helpmecode.py and use autokey instead of ahk.
+
+# 2023-07-16 21:49:58.735078
++/drop helpmecode.p
+
+# 2023-07-16 21:50:08.814918
++/drop helpmecode.py
+
+# 2023-07-16 21:50:52.331535
++/run rm helpmecode.py
+
+# 2023-07-16 21:51:23.314880
++/ls
